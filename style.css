@@ -1,0 +1,50 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+#canvas {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+
+.controls-box {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin: auto;
+    width: 300px;
+}
+
+.controls-box div {
+    display: flex;
+    gap: 10px;
+    margin: auto;
+}
+
+.controls-box div p {
+    padding: 0;
+    margin: auto;
+}
+
+button, input {
+    margin: 0;
+    padding: 5px;
+    border: 4px solid lightgray;
+    border-radius: none;
+    background-color: black;
+    color: white;
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}

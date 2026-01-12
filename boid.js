@@ -99,12 +99,10 @@ export class Boid {
         // Update
         // Normalize
         let factor = Math.hypot(this.vx, this.vy);
-        if (factor > 0) {
-            this.vx /= factor;
-            this.vy /= factor;
-        }
+        this.vx /= factor;
+        this.vy /= factor;
 
-        this.randomAngle += (Math.random()-0.5) * 0.1;
+        this.randomAngle += (Math.sin(performance.now() * 0.001 * this.x)) * 0.002;
         this.vx += Math.cos(this.randomAngle) * 0.1;
         this.vy += Math.sin(this.randomAngle) * 0.1;
 
@@ -118,7 +116,20 @@ export class Boid {
     }
 
     render() {
-        this.ctx.fillStyle = "blue";
-        this.ctx.fillRect(this.x, this.y, 5, 5);
+        const angle = Math.atan2(this.vy, this.vx);
+
+        this.ctx.save();
+        this.ctx.translate(this.x, this.y);
+        this.ctx.rotate(angle);
+
+        this.ctx.fillStyle = "rgb(71, 153, 235)";
+        this.ctx.beginPath();
+        this.ctx.moveTo(8, 0);
+        this.ctx.lineTo(-6, 4);
+        this.ctx.lineTo(-6, -4);
+        this.ctx.closePath();
+        this.ctx.fill();
+
+        this.ctx.restore();
     }
 }
