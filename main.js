@@ -8,8 +8,8 @@ const ctx = canvas.getContext("2d");
 
 const boids = [];
 
-for (let x = 0; x < 10; ++x) {
-    for (let y = 0; y < 10; ++y) {
+for (let x = 0; x < 30; ++x) {
+    for (let y = 0; y < 30; ++y) {
         const boid = new Boid(ctx, Math.random() * canvas.width, Math.random() * canvas.height, (Math.random()-0.5) * Math.PI);
         boids.push(boid);
     }
