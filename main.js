@@ -13,29 +13,26 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-document.addEventListener("click", (e) => {
-    const canvasRect = canvas.getBoundingClientRect();
-    if (e.clientX < canvasRect.left || e.clientY < canvasRect.top)  return;
-    const boid = new Boid(ctx, e.clientX-canvasRect.left, e.clientY-canvasRect.top, (Math.random()-0.5) * Math.PI);
+document.getElementById("slider").addEventListener("input", () => {
+    const number = document.getElementById("slider").value;
+    document.getElementById("numberBoids").innerText = number;
+    const newNumber = number - boids.length;
+    if (newNumber > 0) {
+        for (let i = 0; i < newNumber; ++i) {
+            const boid = new Boid(ctx, Math.random()*canvas.width, Math.random()*canvas.height, (Math.random()-0.5) * Math.PI);
+            boids.push(boid);
+        }
+    } else if (newNumber < 0) {
+        for (let i = 0; i < -newNumber; ++i) {
+            boids.pop();
+        }
+    }
+});
+
+for (let i = 0; i < 100; ++i) {
+    const boid = new Boid(ctx, Math.random()*canvas.width, Math.random()*canvas.height, (Math.random()-0.5) * Math.PI);
     boids.push(boid);
-});
-
-document.getElementById("clearButton").addEventListener("click", () => {
-    boids = [];
-});
-
-document.getElementById("addButton").addEventListener("click", () => {
-    const number = document.getElementById("number").value;
-    if (!number || number <= 0 || number >= 200) {
-        alert("Please enter a valid number of boids!");
-        return;
-    }
-    for (let i = 0; i < number; ++i) {
-        const boid = new Boid(ctx, Math.random()*canvas.width, Math.random()*canvas.height, (Math.random()-0.5) * Math.PI);
-        boids.push(boid);
-    }
-});
-
+}
 let lastTime = performance.now();
 function loop(time) {
     const dt = (time - lastTime) / 1000;

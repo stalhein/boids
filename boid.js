@@ -109,10 +109,10 @@ export class Boid {
         this.x += this.vx * this.speed * dt;
         this.y += this.vy * this.speed * dt;
 
-        if (this.x < EDGE_BUFFER) this.vx += 0.5;
-        if (this.x > width - EDGE_BUFFER) this.vx -= 0.5;
-        if (this.y < EDGE_BUFFER) this.vy += 0.5;
-        if (this.y > height - EDGE_BUFFER) this.vy -= 0.5;
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
     }
 
     render() {
