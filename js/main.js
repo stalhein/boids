@@ -11,7 +11,7 @@ window.addEventListener("resize", () => {
   canvas.height = window.innerHeight;
 });
 
-const boidManager = new BoidManager(ctx, 3000);
+const boidManager = new BoidManager(ctx, 2000);
 
 let lastTime = performance.now();
 function loop(time) {
@@ -23,7 +23,7 @@ function loop(time) {
 
 
   // Render
-  ctx.fillStyle = "rgb(0, 0, 0, 0.7)";
+  ctx.fillStyle = "rgb(0, 0, 0, 0.5)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   boidManager.render();

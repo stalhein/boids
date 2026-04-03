@@ -1,15 +1,36 @@
-const SEPERATION_DISTANCE = 30;
-const ALIGNMENT_DISTANCE = 80;
-const COHESION_DISTANCE = 150;
+const SEPERATION_DISTANCE = 25;
+const ALIGNMENT_DISTANCE = 60;
+const COHESION_DISTANCE = 110;
 
-const SEPERATION_MULT = 3;
-const ALIGNMENT_MULT = 0.05;
-const COHESION_MULT = 0.015;
+const COHESION_DISTANCE_SQUARED = COHESION_DISTANCE ** 2;
 
-const MIN_SPEED = 100;
+const SEPERATION_MULT = 3.5;
+const ALIGNMENT_MULT = 0.043;
+const COHESION_MULT = 0.018;
+const WANDER_MULT = 6;
+
+const MIN_SPEED = 120;
 const MAX_SPEED = 200;
 
-const TILE_SIZE = Math.max(SEPERATION_DISTANCE, Math.max(ALIGNMENT_DISTANCE, COHESION_DISTANCE));
+const BORDER = 100;
+const ICE = 6; // Border force lol
+
+const FOV = (3 / 4) * Math.PI;
+const FOV_COS = Math.cos(FOV);
+
+const TILE_SIZE = Math.max(
+  SEPERATION_DISTANCE,
+  Math.max(ALIGNMENT_DISTANCE, COHESION_DISTANCE),
+);
+
+const COLOUR_CACHE = [];
+for (let i = 0; i < 20; ++i) {
+  const s = i / 20;
+  const r = Math.floor(20 + 200 * s);
+  const g = Math.floor(150 + 10 * s);
+  const b = Math.floor(10 + 10 * s);
+  COLOUR_CACHE.push(`rgb(${r}, ${g}, ${b})`);
+}
 
 export class BoidManager {
   constructor(ctx, numberBoids) {
@@ -21,8 +42,8 @@ export class BoidManager {
     this.velX = new Float32Array(numberBoids);
     this.velY = new Float32Array(numberBoids);
 
-    this.tileCols = ctx.canvas.width / TILE_SIZE;
-    this.tileRows = ctx.canvas.height / TILE_SIZE;
+    this.tileCols = Math.ceil(ctx.canvas.width / TILE_SIZE);
+    this.tileRows = Math.ceil(ctx.canvas.height / TILE_SIZE);
     this.firstTileBoid = new Int32Array(this.tileCols * this.tileRows);
     this.nextTileBoid = new Int32Array(numberBoids);
 
@@ -41,8 +62,14 @@ export class BoidManager {
     // Create tile grid
     this.firstTileBoid.fill(-1);
     for (let i = 0; i < this.number; ++i) {
-      const tileCol = Math.floor(this.posX[i] / TILE_SIZE);
-      const tileRow = Math.floor(this.posY[i] / TILE_SIZE);
+      const tileCol = Math.max(
+        0,
+        Math.min(Math.floor(this.posX[i] / TILE_SIZE), this.tileCols - 1),
+      );
+      const tileRow = Math.max(
+        0,
+        Math.min(Math.floor(this.posY[i] / TILE_SIZE), this.tileRows - 1),
+      );
 
       const index = this.tileCols * tileRow + tileCol;
 
@@ -50,22 +77,47 @@ export class BoidManager {
       this.firstTileBoid[index] = i;
     }
 
-    // Move boids 
+    // Move boids
 
     for (let i = 0; i < this.number; ++i) {
-      const tileCol = Math.floor(this.posX[i] / TILE_SIZE);
-      const tileRow = Math.floor(this.posY[i] / TILE_SIZE);
+      const tileCol = Math.max(
+        0,
+        Math.min(Math.floor(this.posX[i] / TILE_SIZE), this.tileCols - 1),
+      );
+      const tileRow = Math.max(
+        0,
+        Math.min(Math.floor(this.posY[i] / TILE_SIZE), this.tileRows - 1),
+      );
 
-      let sX = 0, sY = 0;
-      let aX = 0, aY = 0, aCount = 0;
-      let cX = 0, cY = 0, cCount = 0;
+      let sX = 0,
+        sY = 0;
+      let aX = 0,
+        aY = 0,
+        aCount = 0;
+      let cX = 0,
+        cY = 0,
+        cCount = 0;
+
+      const s = Math.hypot(this.velX[i], this.velY[i]);
+      let fX = 0,
+        fY = 0;
+      if (s > 0) {
+        fX = this.velX[i] / s;
+        fY = this.velY[i] / s;
+      }
 
       for (let dr = -1; dr <= 1; ++dr) {
         for (let dc = -1; dc <= 1; ++dc) {
           const row = tileRow + dr;
           const col = tileCol + dc;
 
-          if (row < 0 || row >= this.tileRows || col < 0 || col >= this.tileCols) continue;
+          if (
+            row < 0 ||
+            row >= this.tileRows ||
+            col < 0 ||
+            col >= this.tileCols
+          )
+            continue;
 
           const index = row * this.tileCols + col;
 
@@ -76,14 +128,25 @@ export class BoidManager {
               const dx = this.posX[neighbour] - this.posX[i];
               const dy = this.posY[neighbour] - this.posY[i];
 
-              const distanceSquared = dx*dx + dy*dy;
+              const distanceSquared = dx * dx + dy * dy;
 
-              if (distanceSquared <= 0) {
+              if (
+                distanceSquared <= 0 ||
+                distanceSquared > COHESION_DISTANCE_SQUARED
+              ) {
                 neighbour = this.nextTileBoid[neighbour];
                 continue;
               }
 
               const distance = Math.sqrt(distanceSquared);
+
+              const directionX = dx / distance;
+              const directionY = dy / distance;
+
+              if (fX * directionX + fY * directionY < FOV_COS) {
+                neighbour = this.nextTileBoid[neighbour];
+                continue;
+              }
 
               // Seperation
               if (distance <= SEPERATION_DISTANCE) {
@@ -92,14 +155,14 @@ export class BoidManager {
                 sY -= (dy / distance) * factor;
               }
 
-              // Alignment 
+              // Alignment
               if (distance <= ALIGNMENT_DISTANCE) {
                 aX += this.velX[neighbour];
                 aY += this.velY[neighbour];
                 aCount++;
               }
 
-              // Cohesion 
+              // Cohesion
               if (distance <= COHESION_DISTANCE) {
                 cX += this.posX[neighbour];
                 cY += this.posY[neighbour];
@@ -123,17 +186,25 @@ export class BoidManager {
         accelerationX += (aX / aCount - this.velX[i]) * ALIGNMENT_MULT;
         accelerationY += (aY / aCount - this.velY[i]) * ALIGNMENT_MULT;
       }
-      
+
       if (cCount > 0) {
-        accelerationX += ((cX / cCount) - this.posX[i]) * COHESION_MULT;
-        accelerationY += ((cY / cCount) - this.posY[i]) * COHESION_MULT;
+        accelerationX += (cX / cCount - this.posX[i]) * COHESION_MULT;
+        accelerationY += (cY / cCount - this.posY[i]) * COHESION_MULT;
       }
+
+      accelerationX += (Math.random() - 0.5) * WANDER_MULT;
+      accelerationY += (Math.random() - 0.5) * WANDER_MULT;
+
+      if (this.posX[i] < BORDER) accelerationX += ICE;
+      else if (this.posX[i] > cw - BORDER) accelerationX -= ICE;
+
+      if (this.posY[i] < BORDER) accelerationY += ICE;
+      else if (this.posY[i] > ch - BORDER) accelerationY -= ICE;
 
       this.velX[i] += accelerationX;
       this.velY[i] += accelerationY;
 
       const speed = Math.hypot(this.velX[i], this.velY[i]);
-
       if (speed > MAX_SPEED) {
         this.velX[i] = (this.velX[i] / speed) * MAX_SPEED;
         this.velY[i] = (this.velY[i] / speed) * MAX_SPEED;
@@ -144,12 +215,6 @@ export class BoidManager {
 
       this.posX[i] += this.velX[i] * deltaTime;
       this.posY[i] += this.velY[i] * deltaTime;
-
-
-      if (this.posX[i] < 0) this.posX[i] += cw;
-      if (this.posX[i] >= cw) this.posX[i] -= cw;
-      if (this.posY[i] < 0) this.posY[i] += ch;
-      if (this.posY[i] >= ch) this.posY[i] -= ch;
     }
   }
 
@@ -157,21 +222,24 @@ export class BoidManager {
     for (let i = 0; i < this.number; ++i) {
       const x = this.posX[i];
       const y = this.posY[i];
-      const angle = Math.atan2(this.velY[i], this.velX[i]);
 
-      this.ctx.save();
-      this.ctx.translate(x, y);
-      this.ctx.rotate(angle);
+      const speedSquared = this.velX[i] ** 2 + this.velY[i] ** 2;
 
-      this.ctx.fillStyle = "rgb(71, 153, 235)";
+      const colourIndex = Math.min(Math.floor((speedSquared / MAX_SPEED**2)*20), 19);
+
+      const speed = Math.sqrt(speedSquared);
+      const cos = this.velX[i] / speed;
+      const sin = this.velY[i] / speed;
+
+      this.ctx.fillStyle = COLOUR_CACHE[colourIndex];
       this.ctx.beginPath();
-      this.ctx.moveTo(4, 0);
-      this.ctx.lineTo(-3, 2);
-      this.ctx.lineTo(-3, -2);
+
+      this.ctx.moveTo(x+2*cos, y+2*sin);
+      this.ctx.lineTo(x-1.5*cos-sin, y-1.5*sin+cos);
+      this.ctx.lineTo(x-1.5*cos+sin, y-1.5*sin-cos);
+
       this.ctx.closePath();
       this.ctx.fill();
-
-      this.ctx.restore();
     }
   }
-};
+}
