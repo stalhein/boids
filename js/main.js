@@ -1,17 +1,30 @@
 import { BoidManager } from "./boidmanager.js";
 
+// Setup WebGPU
 const canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const ctx = canvas.getContext("2d");
+const adapter = await navigator.gpu.requestAdapter();
+if (!adapter) {
+  throw new Error("WebGPU not supported.");
+}
+const device = await adapter.requestDevice();
+
+const context = canvas.getContext("webgpu");
+const format = navigator.gpu.getPreferredCanvasFormat();
+
+context.configure({
+  device,
+  format,
+});
 
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
 
-const boidManager = new BoidManager(ctx, 2000);
+const boidManager = new BoidManager(context, device, format, 10000);
 
 let lastTime = performance.now();
 function loop(time) {
@@ -23,8 +36,6 @@ function loop(time) {
 
 
   // Render
-  ctx.fillStyle = "rgb(0, 0, 0, 0.5)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   boidManager.render();
 
