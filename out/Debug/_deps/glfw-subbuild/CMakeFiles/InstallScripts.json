@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/twhite/Projects/boids/c/out/Debug/_deps/glfw-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

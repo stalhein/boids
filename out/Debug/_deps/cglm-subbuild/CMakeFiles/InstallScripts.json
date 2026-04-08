@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/twhite/Projects/boids/c/out/Debug/_deps/cglm-subbuild/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

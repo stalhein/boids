@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Boids.dir/link.d CMakeFiles/Boids.dir/src/main.cpp.o CMakeFiles/Boids.dir/external/glad/src/glad.c.o -o Boids  _deps/glfw-build/src/libglfw3.a _deps/glm-build/glm/libglm.a /usr/lib/librt.a -lm -ldl /usr/lib/libX11.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so

@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/twhite/Projects/boids/build/cmake_install.cmake",
+		"/home/twhite/Projects/boids/build/_deps/glfw-build/cmake_install.cmake",
+		"/home/twhite/Projects/boids/build/_deps/glfw-build/src/cmake_install.cmake",
+		"/home/twhite/Projects/boids/build/_deps/glm-build/cmake_install.cmake",
+		"/home/twhite/Projects/boids/build/_deps/glm-build/glm/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

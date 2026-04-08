@@ -1,0 +1,116 @@
+[
+{
+  "directory": "/home/twhite/Projects/boids/build",
+  "command": "/usr/bin/c++  -I/home/twhite/Projects/boids/src -I/home/twhite/Projects/boids/include -I/home/twhite/Projects/boids/external/glad/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glm-src -std=gnu++17 -o CMakeFiles/Boids.dir/src/main.cpp.o -c /home/twhite/Projects/boids/src/main.cpp",
+  "file": "/home/twhite/Projects/boids/src/main.cpp",
+  "output": "CMakeFiles/Boids.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build",
+  "command": "/usr/bin/cc  -I/home/twhite/Projects/boids/src -I/home/twhite/Projects/boids/include -I/home/twhite/Projects/boids/external/glad/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glm-src  -o CMakeFiles/Boids.dir/external/glad/src/glad.c.o -c /home/twhite/Projects/boids/external/glad/src/glad.c",
+  "file": "/home/twhite/Projects/boids/external/glad/src/glad.c",
+  "output": "CMakeFiles/Boids.dir/external/glad/src/glad.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/context.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/context.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/context.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/init.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/init.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/init.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/init.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/input.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/input.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/input.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/input.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/monitor.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/monitor.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/monitor.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/monitor.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/vulkan.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/vulkan.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/vulkan.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/vulkan.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/window.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/window.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/window.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/window.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/x11_init.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/x11_init.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/x11_init.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_init.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/x11_monitor.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/x11_monitor.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/x11_monitor.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_monitor.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/x11_window.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/x11_window.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/x11_window.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/x11_window.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/xkb_unicode.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/xkb_unicode.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/xkb_unicode.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/xkb_unicode.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_time.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/posix_time.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/posix_time.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_time.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/posix_thread.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/posix_thread.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/posix_thread.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/posix_thread.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/glx_context.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/glx_context.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/glx_context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/glx_context.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/egl_context.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/egl_context.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/egl_context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/egl_context.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/osmesa_context.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/osmesa_context.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/osmesa_context.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/osmesa_context.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glfw-build/src",
+  "command": "/usr/bin/cc -D_GLFW_USE_CONFIG_H -I/home/twhite/Projects/boids/build/_deps/glfw-src/include -I/home/twhite/Projects/boids/build/_deps/glfw-src/src -I/home/twhite/Projects/boids/build/_deps/glfw-build/src -std=gnu99 -fPIC -Wall -o CMakeFiles/glfw.dir/linux_joystick.c.o -c /home/twhite/Projects/boids/build/_deps/glfw-src/src/linux_joystick.c",
+  "file": "/home/twhite/Projects/boids/build/_deps/glfw-src/src/linux_joystick.c",
+  "output": "_deps/glfw-build/src/CMakeFiles/glfw.dir/linux_joystick.c.o"
+},
+{
+  "directory": "/home/twhite/Projects/boids/build/_deps/glm-build/glm",
+  "command": "/usr/bin/c++  -I/home/twhite/Projects/boids/build/_deps/glm-src -std=c++17 -o CMakeFiles/glm.dir/detail/glm.cpp.o -c /home/twhite/Projects/boids/build/_deps/glm-src/glm/detail/glm.cpp",
+  "file": "/home/twhite/Projects/boids/build/_deps/glm-src/glm/detail/glm.cpp",
+  "output": "_deps/glm-build/glm/CMakeFiles/glm.dir/detail/glm.cpp.o"
+}
+]
